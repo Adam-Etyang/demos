@@ -16,10 +16,10 @@ class Mailer
 
         // SMTP configuration
         $this->mailer->isSMTP();
-        $this->mailer->Host = "smtp.gmail.com"; // Change to your SMTP server
+        $this->mailer->Host = "smtp.gmail.com";
         $this->mailer->SMTPAuth = true;
-        $this->mailer->Username = "adam.etyang@strathmore.edu"; // Your email
-        $this->mailer->Password = "dknx eejx jkzq smcb"; // Your email password
+        $this->mailer->Username = "adam.etyang@strathmore.edu";
+        $this->mailer->Password = "dknx eejx jkzq smcb";
         $this->mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $this->mailer->Port = 587;
 

@@ -102,7 +102,8 @@ For the sake of demonstration:
 |  1 | Adam Etyang | adametyang69@gmail.com | $2y$12$ouUa90/P8O3TuWjiHJGk9ebJxixIG9vGB0kyBrD7p/065vOEVQFJu |          0 | bdb0082ad9cef5e7452527c3f7b73085178a484471247db03aa7d2fd06bad769 | 2025-09-12 19:14:44 |
 |  2 | Dalton Mule | daltonmulem@gmail.com  | $2y$12$ISKU.OGzVkM7ynCrQC9MT.ifST4C6JpMcc1GKcFj6un6SpIrKQCzC |          0 | fa404f487fa91a83f5a1e69a57ee0df5cf9fdf14e333258ff89faeb6f4a33f8a | 2025-09-12 19:28:36 |
 +----+-------------+------------------------+--------------------------------------------------------------+------------+------------------------------------------------------------------+---------------------+
+![Screenshot 2025-09-12 at 19 47 18](https://github.com/user-attachments/assets/446257ca-ab35-46d2-b186-27d78b42ec12)
 
-![[/assets/screenshot.jpeg]]
+
 
 

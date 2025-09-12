@@ -1,8 +1,8 @@
 <?php
 return [
   'host' => 'localhost',
-  'dbname' => 'project',
-  'username' => 'root',
-  'password' => 'password',
+  'dbname' => 'projects',
+  'username' => 'adam',
+  'password' => '',
   'charset' => 'utf8mb4'
 ];

@@ -9,53 +9,53 @@ $message = "";
 $messageType = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = trim($_POST["name"] ?? "");
-    $email = trim($_POST["email"] ?? "");
-    $password = $_POST["password"] ?? "";
-    $confirmPassword = $_POST["confirm_password"] ?? "";
+  $name = trim($_POST["name"] ?? "");
+  $email = trim($_POST["email"] ?? "");
+  $password = $_POST["password"] ?? "";
+  $confirmPassword = $_POST["confirm_password"] ?? "";
 
-    if (empty($name) || empty($email) || empty($password)) {
-        $message = "All fields are required.";
-        $messageType = "danger";
-    } elseif ($password !== $confirmPassword) {
-        $message = "Passwords do not match.";
-        $messageType = "danger";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $message = "Invalid email format.";
-        $messageType = "danger";
-    } else {
-        try {
-            $database = new Database();
-            $user = new User($database);
+  if (empty($name) || empty($email) || empty($password)) {
+    $message = "All fields are required.";
+    $messageType = "danger";
+  } elseif ($password !== $confirmPassword) {
+    $message = "Passwords do not match.";
+    $messageType = "danger";
+  } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $message = "Invalid email format.";
+    $messageType = "danger";
+  } else {
+    try {
+      $database = new Database();
+      $user = new User($database);
 
-            if ($user->emailExists($email)) {
-                $message = "Email already registered.";
-                $messageType = "warning";
-            } else {
-                $token = $user->create($email, $password, $name);
+      if ($user->emailExists($email)) {
+        $message = "Email already registered.";
+        $messageType = "warning";
+      } else {
+        $token = $user->create($email, $password, $name);
 
-                if ($token) {
-                    $mailer = new Mailer();
-                    if ($mailer->sendVerificationEmail($email, $name, $token)) {
-                        $message =
-                            "Registration successful! Please check your email to verify your account.";
-                        $messageType = "success";
-                    } else {
-                        $message =
-                            "Registration successful, but failed to send verification email.";
-                        $messageType = "warning";
-                    }
-                } else {
-                    $message = "Registration failed. Please try again.";
-                    $messageType = "danger";
-                }
-            }
-        } catch (Exception $e) {
-            $message = "An error occurred. Please try again.";
-            $messageType = "danger";
-            error_log($e->getMessage());
+        if ($token) {
+          $mailer = new Mailer();
+          if ($mailer->sendVerificationEmail($email, $name, $token)) {
+            $message =
+              "Registration successful! Please check your email to verify your account.";
+            $messageType = "success";
+          } else {
+            $message =
+              "Registration successful, but failed to send verification email.";
+            $messageType = "warning";
+          }
+        } else {
+          $message = "Registration failed. Please try again.";
+          $messageType = "danger";
         }
+      }
+    } catch (Exception $e) {
+      $message = "An error occurred. Please try again.";
+      $messageType = "danger";
+      error_log($e->getMessage());
     }
+  }
 }
 ?>
 
@@ -89,16 +89,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label for="name" class="form-label">Full Name</label>
                 <input type="text" class="form-control" id="name" name="name"
                   value="<?= htmlspecialchars(
-                      $_POST["name"] ?? "",
-                  ) ?>" required>
+                            $_POST["name"] ?? "",
+                          ) ?>" required>
               </div>
 
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email"
                   value="<?= htmlspecialchars(
-                      $_POST["email"] ?? "",
-                  ) ?>" required>
+                            $_POST["email"] ?? "",
+                          ) ?>" required>
               </div>
 
               <div class="mb-3">
